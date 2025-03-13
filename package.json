@@ -38,13 +38,12 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
     "@electron-forge/plugin-fuses": "^7.7.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "^23.2.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.0.4",
-    "@types/electron": "^23.2.1",
-    "@types/node": "^20.1.1"
+    "@types/node": "^22.13.10",
+    "electron": "^35.0.1",
+    "typescript": "^5.8.2"
   },
   "dependencies": {
+    "@xyflow/react": "^12.4.4",
     "electron-squirrel-startup": "^1.0.1",
     "update-electron-app": "^3.1.1"
   }
