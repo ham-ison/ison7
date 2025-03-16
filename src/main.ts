@@ -1,20 +1,26 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 
+declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
+declare const MAIN_WINDOW_VITE_NAME: string;
+
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
-      devTools: false // Disable DevTools
+      contextIsolation: false
     }
   });
 
-  //mainWindow.loadFile('html/index.html');
-  mainWindow.loadURL('https://ham-ison.github.io/');
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    mainWindow.webContents.openDevTools();
+  } else {
+    mainWindow.loadFile(path.join(__dirname, '../../dist/renderer/index.html'));
+  }
 }
 
 app.whenReady().then(() => {

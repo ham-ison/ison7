@@ -13,7 +13,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -38,13 +39,23 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
     "@electron-forge/plugin-fuses": "^7.7.0",
     "@electron/fuses": "^1.8.0",
+    "@types/axios": "^0.9.36",
     "@types/node": "^22.13.10",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@types/ws": "^8.18.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "electron": "^35.0.1",
     "typescript": "^5.8.2"
   },
   "dependencies": {
     "@xyflow/react": "^12.4.4",
+    "axios": "^1.8.3",
     "electron-squirrel-startup": "^1.0.1",
-    "update-electron-app": "^3.1.1"
+    "react-flow-renderer": "^10.3.17",
+    "reactflow": "^11.11.4",
+    "update-electron-app": "^3.1.1",
+    "ws": "^8.18.1",
+    "zustand": "^5.0.3"
   }
 }
