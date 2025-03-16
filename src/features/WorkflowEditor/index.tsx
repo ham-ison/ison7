@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { ReactFlow, Background, Controls } from 'reactflow';
 import { useStore } from '../../store';

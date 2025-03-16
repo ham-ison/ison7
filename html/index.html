@@ -2,19 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>来自 HAM ison7 APP 的问好！</title>
   </head>
   <body>
-    <h1>来自 HAM ison7 APP 的问好！</h1>
-    <p id="info"></p>
+    <div id="app"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
-  <script src="./renderer.js"></script>
+  <script type="module" src="./renderer.js"></script>
 </html>

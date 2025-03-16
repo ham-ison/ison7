@@ -16,10 +16,14 @@ function createWindow() {
   });
 
   if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    mainWindow.loadURL('http://localhost:5173').catch(err => {
+      console.error('Failed to load dev server:', err);
+    });
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../../dist/renderer/index.html'));
+    mainWindow.loadFile(path.join(__dirname, '../../dist/renderer/index.html')).catch(err => {
+      console.error('Failed to load production file:', err);
+    });
   }
 }
 

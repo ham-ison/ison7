@@ -1,9 +1,10 @@
-import WebSocket from 'ws';
-import { Server } from 'http';
+import { WebSocketServer } from 'ws';
+import type { Server } from 'http';
+import { createServer } from 'http';
 import { useStore } from '../store';
 
 export function createWebSocketServer(server: Server) {
-  const wss = new WebSocket.Server({ server });
+  const wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws) => {
     // 同步初始状态
