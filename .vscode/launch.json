@@ -2,36 +2,38 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "启动 Electron(开发模式)",
+      "name": "Debug Main Process",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "node",
-      "args": [
-        "--inspect=9222",
-        "node_modules/electron/cli.js",
-        "dist/main/main.js"
-      ],
-      "outputCapture": "std",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron-vite",
+      "windows": {
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron-vite.cmd"
+      },
+      "runtimeArgs": ["--sourcemap"],
       "env": {
-        "VITE_DEV_SERVER_URL": "http://localhost:5173"
+        "REMOTE_DEBUGGING_PORT": "9222"
       }
     },
     {
-      "name": "调试主进程",
-      "type": "node",
-      "request": "attach",
+      "name": "Debug Renderer Process",
       "port": 9222,
-      "restart": true,
-      "protocol": "inspector"
-    },
-    {
-      "name": "调试渲染进程",
+      "request": "attach",
       "type": "chrome",
-      "request": "launch",
-      "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/src",
-      "sourceMaps": true
+      "webRoot": "${workspaceFolder}/src/renderer",
+      "timeout": 60000,
+      "presentation": {
+        "hidden": true
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug All",
+      "configurations": ["Debug Main Process", "Debug Renderer Process"],
+      "presentation": {
+        "order": 1
+      }
     }
   ]
 }

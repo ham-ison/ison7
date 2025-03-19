@@ -1,17 +1,4 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist/main",
-    "rootDir": "./electron",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "declaration": true, // 关键：生成声明文件
-    "declarationDir": "./types", // 单独存放声明文件
-    "target": "ESNext",
-    "strict": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "composite": false
-  },
-  "include": ["electron/**/*.ts"],
-  "exclude": ["dist", "node_modules", "src/renderer"] // 关键：排除输出目录
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
 }
