@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from "path";
+import electron from 'vite-plugin-electron';
 
 export default defineConfig(({ mode }) => ({
-  plugins: [react()],
+  plugins: [
+    react(),
+    electron({
+      entry: "electron/main.ts", // 指定 Electron 主进程入口
+    }),
+  ],
+  publicDir: "public",
   base: mode === 'development' ? '/' : './', // 打包路径适配
   build: {
     outDir: 'dist/renderer',  // 指定 Vite 输出目录
@@ -13,6 +20,9 @@ export default defineConfig(({ mode }) => ({
       formats: ["cjs"], // 指定 CommonJS 格式，适用于 Electron 主进程
     },
     rollupOptions: {
+      input: {
+        main: "public/index.html", // Vite 会根据这个生成 index.html
+      },
       external: ["electron", "path", "url"], // 告诉 Rollup 这些是外部依赖，不要打包
     },
   },

@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron'
-import * as path from 'node:path'
+import * as path from "path";
 
 let mainWindow: BrowserWindow | null;
 
@@ -21,7 +21,7 @@ function createWindow() {
     mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
     mainWindow.webContents.openDevTools()
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../dist/renderer/index.html'))
+    mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'))
   }
 }
 

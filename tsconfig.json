@@ -6,7 +6,7 @@
     "moduleResolution": "node",
     "declaration": true, // 关键：生成声明文件
     "declarationDir": "./types", // 单独存放声明文件
-    "target": "es2017",
+    "target": "ESNext",
     "strict": true,
     "sourceMap": true,
     "esModuleInterop": true,
