@@ -1,25 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "jsx": "react-jsx",
+    "outDir": "./dist/main",
+    "rootDir": "./electron",
+    "module": "CommonJS",
     "moduleResolution": "node",
-    "useDefineForClassFields": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "checkJs": true,
-    "isolatedModules": true,
+    "declaration": true, // 关键：生成声明文件
+    "declarationDir": "./types", // 单独存放声明文件
+    "target": "es2017",
     "strict": true,
+    "sourceMap": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "composite": false
   },
-  "include": ["./**/*.d.ts", "./**/*.{js,jsx,ts,tsx}"],
-  "exclude": ["node_modules"]
+  "include": ["electron/**/*.ts"],
+  "exclude": ["dist", "node_modules", "src/renderer"] // 关键：排除输出目录
 }

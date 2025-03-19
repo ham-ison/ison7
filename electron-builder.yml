@@ -1,0 +1,9 @@
+appId: com.example.electron-vite
+productName: ElectronViteApp
+directories:
+  output: dist/executable
+files:
+  - "dist/renderer/**/*"
+  - "electron/**/*"
+extraMetadata:
+  main: dist/main/main.js

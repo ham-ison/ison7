@@ -1,17 +1,31 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from "path";
 
-export default defineConfig({
-  root: '.',
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
+  base: mode === 'development' ? '/' : './', // 打包路径适配
   build: {
-    outDir: './dist/renderer',
-    emptyOutDir: true,
-    sourcemap: false
+    outDir: 'dist/renderer',  // 指定 Vite 输出目录
+    emptyOutDir: true,        // 构建前清空目录
+    lib: {
+      entry: "electron/main.ts",
+      formats: ["cjs"], // 指定 CommonJS 格式，适用于 Electron 主进程
+    },
+    rollupOptions: {
+      external: ["electron", "path", "url"], // 告诉 Rollup 这些是外部依赖，不要打包
+    },
   },
   define: {
-    'import.meta.env.MAIN_VITE_NAME': JSON.stringify(process.env.NODE_ENV === 'production' ? 'production' : 'development'),
-    'MAIN_WINDOW_VITE_DEV_SERVER_URL': JSON.stringify(process.env.NODE_ENV === 'development' ? 'http://localhost:5173' : null),
-    'MAIN_WINDOW_VITE_NAME': JSON.stringify(process.env.NODE_ENV === 'development' ? 'vite-dev' : 'index')
-  }
-})
+    'process.env.NODE_ENV': JSON.stringify(mode)
+  },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
+  },
+  /*server: {
+    host: true,
+    port: 5173,
+  },*/
+}))

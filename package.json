@@ -1,66 +1,61 @@
 {
-  "name": "ison7",
-  "version": "0.0.1",
+  "name": "ison7-app",
+  "private": true,
+  "version": "0.0.0",
   "description": "HAM ison7 APP",
-  "main": "dist/main.js",
+  "author": "HAM <hamiosn@qq.com> ",
+  "main": "dist/main/main.js",
   "scripts": {
-    "start": "tsc && electron .",
-    "watch": "tsc -w & electron .",
-    "electron-forge": "electron-forge",
-    "electron-forge-lint": "electron-forge lint",
-    "electron-forge-publish": "electron-forge publish",
-    "clean": "electron-forge clean",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"vite\" \" && electron .\"",
+    "build": "tsc && vite build",
+    "start": "electron .",
+    "electron": "npm run build && electron .",
     "lint": "eslint .",
-    "dev": "vite",
-    "preview": "vite preview",
-    "build": "vite build"
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ham-ison/ison7.git"
+  "build": {
+    "appId": "com.ison7.app",
+    "productName": "ison7",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "public/icon.png"
+    }
   },
-  "keywords": [
-    "ham",
-    "ison7"
-  ],
-  "author": "HAM",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ham-ison/ison7/issues"
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
-  "homepage": "https://github.com/ham-ison/ison7#readme",
   "devDependencies": {
-    "@electron-forge/cli": "^7.7.0",
-    "@electron-forge/maker-deb": "^7.7.0",
-    "@electron-forge/maker-rpm": "^7.7.0",
-    "@electron-forge/maker-squirrel": "^7.7.0",
-    "@electron-forge/maker-zip": "^7.7.0",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.7.0",
-    "@electron-forge/plugin-fuses": "^7.7.0",
-    "@electron/fuses": "^1.8.0",
-    "@types/axios": "^0.9.36",
+    "@eslint/js": "^9.21.0",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@types/ws": "^8.18.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "electron": "^35.0.1",
-    "typescript": "^5.8.2",
-    "vite": "^5.0.0"
-  },
-  "dependencies": {
-    "@xyflow/react": "^12.4.4",
-    "axios": "^1.8.3",
-    "electron-squirrel-startup": "^1.0.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-flow-renderer": "^10.3.17",
-    "reactflow": "^11.11.4",
-    "update-electron-app": "^3.1.1",
-    "ws": "^8.18.1",
-    "zustand": "^5.0.3"
+    "concurrently": "^9.1.2",
+    "electron": "^35.0.2",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
   }
 }

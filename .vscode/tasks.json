@@ -1,15 +1,18 @@
 {
     "version": "2.0.0",
     "tasks": [
-        {
-            "label": "tsc: build - tsconfig.json",
-            "type": "shell",
-            "command": "npx tsc",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": "$tsc"
+      {
+        "label": "Start Dev Server",
+        "type": "npm",
+        "script": "dev",
+        "isBackground": true,
+        "problemMatcher": {
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": "VITE v.* ready in",
+            "endsPattern": "Electron Forge is now ready to package your application"
+          }
         }
+      }
     ]
-}
+  }
