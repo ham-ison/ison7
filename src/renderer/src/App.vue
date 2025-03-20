@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Versions from './components/Versions.vue'
+import Draggable from './components/Draggable.vue'
 
 const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 </script>
@@ -16,5 +17,6 @@ const ipcHandle = () => window.electron.ipcRenderer.send('ping')
       <a target="_blank" rel="noreferrer" @click="ipcHandle">Let's Go Start</a>
     </div>
   </div>
+  <Draggable />
   <Versions />
 </template>
