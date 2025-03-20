@@ -1,8 +1,9 @@
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
-import { VueFlow, useVueFlow, Background, Controls, MiniMap } from "@vue-flow/core";
-import { initialEdges, initialNodes } from './initial-elements.ts'
+import { VueFlow, useVueFlow, PanelPositionType } from "@vue-flow/core";
 import Icon from './Icon.vue'
+import { MiniMap, Background, ControlButton, Controls } from '@vue-flow/additional-components';
+import { initialEdges, initialNodes } from './initial-elements.ts'
 
 /**
  * `useVueFlow` provides:
@@ -18,6 +19,8 @@ const edges = ref(initialEdges)
 
 // our dark mode toggle flag
 const dark = ref(false)
+
+const controlsPosition: PanelPositionType = 'top-left'
 
 /**
  * This is a Vue Flow event-hook which can be listened to from anywhere you call the composable, instead of only on the main component
@@ -87,7 +90,12 @@ function resetTransform() {
 function toggleDarkMode() {
   dark.value = !dark.value
 }
+
+const onNodeClick = (node) => {
+  console.log('节点被点击:', node);
+};
 </script>
+
 
 <template>
   <VueFlow
@@ -96,14 +104,15 @@ function toggleDarkMode() {
     :class="{ dark }"
     class="basic-flow"
     :default-viewport="{ zoom: 1.5 }"
-    :min-zoom="0.2"
-    :max-zoom="4"
-  >
+    :min-zoom="0.5"
+    :max-zoom="8"
+    @node:click="onNodeClick">
+
     <Background pattern-color="#aaa" :gap="16" />
 
     <MiniMap />
 
-    <Controls position="top-left">
+    <Controls :PanelPosition="controlsPosition">
       <ControlButton title="Reset Transform" @click="resetTransform">
         <Icon name="reset" />
       </ControlButton>

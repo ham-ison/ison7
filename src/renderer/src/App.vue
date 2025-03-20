@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import Versions from './components/Versions.vue'
 import Draggable from './components/Draggable.vue'
-import VueFlow from './components/VueFlow.vue'
-import FlowEditor from './components/FlowEditor.vue'
+import VueFlowDemo from './components/VueFlowDemo.vue'
 
 const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 </script>
 
 <template>
+  <VueFlowDemo />
   <div class="actions">
     <img alt="logo" class="logo" src="./assets/ison7-logo.svg" />
     <div class="action">
@@ -18,7 +18,7 @@ const ipcHandle = () => window.electron.ipcRenderer.send('ping')
     </div>
   </div>
   <Draggable />
-  <FlowEditor />
+  <!-- <FlowEditor /> -->
   <Versions />
   <div class="creator">Powered by HAM</div>
   <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
