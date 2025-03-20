@@ -23,6 +23,7 @@
     "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0",
     "@headlessui/react": "^2.2.0",
+    "@vue-flow/core": "^1.42.4",
     "vue-draggable-resizable": "^3.0.0"
   },
   "devDependencies": {
