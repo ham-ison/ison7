@@ -1,4 +1,6 @@
 import './assets/main.css'
+import '@vue-flow/core/dist/style.css'
+import '@vue-flow/core/dist/theme-default.css'
 import VueDraggableResizable from 'vue-draggable-resizable'
 import { createApp } from 'vue'
 import App from './App.vue'

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Versions from './components/Versions.vue'
 import Draggable from './components/Draggable.vue'
-import VueFlow from './components/VueFlow.vue';
+import VueFlow from './components/VueFlow.vue'
+import FlowEditor from './components/FlowEditor.vue'
 
 const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 </script>
@@ -17,7 +18,7 @@ const ipcHandle = () => window.electron.ipcRenderer.send('ping')
     </div>
   </div>
   <Draggable />
-  <VueFlow />
+  <FlowEditor />
   <Versions />
   <div class="creator">Powered by HAM</div>
   <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
